@@ -11,10 +11,6 @@
 [![PHP Version Require](http://poser.pugx.org/eliashaeussler/php-cs-fixer-config/require/php)](https://packagist.org/packages/eliashaeussler/php-cs-fixer-config)
 [![License](http://poser.pugx.org/eliashaeussler/php-cs-fixer-config/license)](LICENSE)
 
-📦&nbsp;[Packagist](https://packagist.org/packages/eliashaeussler/php-cs-fixer-config) |
-💾&nbsp;[Repository](https://github.com/eliashaeussler/php-cs-fixer-config) |
-🐛&nbsp;[Issue tracker](https://github.com/eliashaeussler/php-cs-fixer-config/issues)
-
 </div>
 
 This package contains basic [PHP-CS-Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)
