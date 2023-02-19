@@ -25,6 +25,7 @@ namespace EliasHaeussler\PhpCsFixerConfig\Tests;
 
 use EliasHaeussler\PhpCsFixerConfig as Src;
 use Generator;
+use PhpCsFixer\Config;
 use PHPUnit\Framework;
 use Symfony\Component\Finder;
 
@@ -109,6 +110,23 @@ final class ConfigTest extends Framework\TestCase
         $this->subject->withFinder(static fn () => $finder);
 
         self::assertSame($finder, $this->subject->getFinder());
+    }
+
+    #[Framework\Attributes\Test]
+    public function withConfigMergesGivenConfig(): void
+    {
+        $finder = new Finder\Finder();
+        $config = (new Config())
+            ->setRules(['foo' => true])
+            ->setFinder($finder)
+            ->setRiskyAllowed(false)
+        ;
+
+        $this->subject->withConfig($config);
+
+        self::assertSame(['foo' => true], $this->subject->getRules());
+        self::assertSame($finder, $this->subject->getFinder());
+        self::assertFalse($this->subject->getRiskyAllowed());
     }
 
     /**

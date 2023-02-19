@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\PhpCsFixerConfig;
 
+use PhpCsFixer\ConfigInterface;
 use Symfony\Component\Finder;
 
 use function array_replace_recursive;
@@ -98,6 +99,15 @@ final class Config extends \PhpCsFixer\Config
         }
 
         $this->setFinder($finder);
+
+        return $this;
+    }
+
+    public function withConfig(ConfigInterface $config): self
+    {
+        $this->setRules($config->getRules());
+        $this->setRiskyAllowed($config->getRiskyAllowed());
+        $this->setFinder($config->getFinder());
 
         return $this;
     }
