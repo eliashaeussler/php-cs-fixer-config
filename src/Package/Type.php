@@ -33,5 +33,6 @@ enum Type: string
 {
     case ComposerPackage = 'Composer package';
     case ComposerPlugin = 'Composer plugin';
+    case SymfonyProject = 'Symfony project';
     case TYPO3Extension = 'TYPO3 CMS extension';
 }
