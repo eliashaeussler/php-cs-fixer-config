@@ -25,6 +25,7 @@ namespace EliasHaeussler\PhpCsFixerConfig;
 
 use Symfony\Component\Finder;
 
+use function array_replace_recursive;
 use function is_callable;
 
 /**
@@ -32,11 +33,13 @@ use function is_callable;
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
+ *
+ * @phpstan-import-type TRulesArray from Rules\Rule
  */
 final class Config extends \PhpCsFixer\Config
 {
     /**
-     * @var array<string, array<string, mixed>|bool>
+     * @phpstan-var TRulesArray
      */
     private static array $defaultRules = [
         '@PSR2' => true,
@@ -76,9 +79,13 @@ final class Config extends \PhpCsFixer\Config
         return $config;
     }
 
-    public function withHeader(Rules\Header $header): self
+    public function withRule(Rules\Rule $rule): self
     {
-        return $this->withRules($header->get());
+        $mergedRuleSet = array_replace_recursive($this->getRules(), $rule->get());
+
+        $this->setRules($mergedRuleSet);
+
+        return $this;
     }
 
     /**
@@ -91,19 +98,6 @@ final class Config extends \PhpCsFixer\Config
         }
 
         $this->setFinder($finder);
-
-        return $this;
-    }
-
-    /**
-     * @param array<string, array<string, mixed>|bool> $rules
-     */
-    public function withRules(array $rules): self
-    {
-        $this->setRules([
-            ...$this->getRules(),
-            ...$rules,
-        ]);
 
         return $this;
     }

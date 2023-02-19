@@ -31,6 +31,7 @@ composer require eliashaeussler/php-cs-fixer-config
 use EliasHaeussler\PhpCsFixerConfig;
 use Symfony\Component\Finder;
 
+// Create header rule
 $header = PhpCsFixerConfig\Rules\Header::create(
     'eliashaeussler/package-name',
     PhpCsFixerConfig\Package\Type::ComposerPackage,
@@ -38,8 +39,17 @@ $header = PhpCsFixerConfig\Rules\Header::create(
     PhpCsFixerConfig\Package\License::GPL3OrLater,
 );
 
+// Create custom rule set
+$ruleSet = PhpCsFixerConfig\Rules\RuleSet::fromArray([
+    'modernize_types_casting' => true,
+    'php_unit_test_case_static_method_calls' => [
+        'call_type' => 'self',
+    ],
+]);
+
 return PhpCsFixerConfig\Config::create()
-    ->withHeader($header)
+    ->withRule($header)
+    ->withRule($ruleSet)
     ->withFinder(static fn (Finder\Finder $finder) => $finder->in(__DIR__))
 ;
 ```

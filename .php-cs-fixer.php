@@ -34,6 +34,6 @@ $header = Rules\Header::create(
 );
 
 return Config::create()
-    ->withHeader($header)
+    ->withRule($header)
     ->withFinder(static fn (Finder\Finder $finder) => $finder->in(__DIR__))
 ;

@@ -23,18 +23,60 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\PhpCsFixerConfig\Rules;
 
+use function array_diff_key;
+use function array_flip;
+use function array_replace_recursive;
+
 /**
- * Rule.
+ * RuleSet.
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  *
- * @phpstan-type TRulesArray array<string, array<string, mixed>|bool>
+ * @phpstan-import-type TRulesArray from Rule
  */
-interface Rule
+final class RuleSet implements Rule
 {
     /**
-     * @phpstan-return TRulesArray
+     * @phpstan-param TRulesArray $rules
      */
-    public function get(): array;
+    public function __construct(
+        private array $rules,
+    ) {
+    }
+
+    public static function create(): self
+    {
+        return new self([]);
+    }
+
+    /**
+     * @phpstan-param TRulesArray $rules
+     */
+    public static function fromArray(array $rules): self
+    {
+        return new self($rules);
+    }
+
+    /**
+     * @phpstan-param TRulesArray $rules
+     */
+    public function add(array $rules): self
+    {
+        $this->rules = array_replace_recursive($this->rules, $rules);
+
+        return $this;
+    }
+
+    public function remove(string ...$rules): self
+    {
+        $this->rules = array_diff_key($this->rules, array_flip($rules));
+
+        return $this;
+    }
+
+    public function get(): array
+    {
+        return $this->rules;
+    }
 }

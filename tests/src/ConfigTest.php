@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace EliasHaeussler\PhpCsFixerConfig\Tests;
 
 use EliasHaeussler\PhpCsFixerConfig as Src;
+use Generator;
 use PHPUnit\Framework;
 use Symfony\Component\Finder;
 
@@ -82,17 +83,12 @@ final class ConfigTest extends Framework\TestCase
     }
 
     #[Framework\Attributes\Test]
-    public function withHeaderAddsHeaderRule(): void
+    #[Framework\Attributes\DataProvider('withRulesAddsRuleDataProvider')]
+    public function withRulesAddsRule(Src\Rules\Rule $rule): void
     {
-        $header = Src\Rules\Header::create(
-            'foo/baz',
-            Src\Package\Type::ComposerPackage,
-            Src\Package\Author::create('foo', 'foo@baz.de'),
-        );
+        $this->subject->withRule($rule);
 
-        $this->subject->withHeader($header);
-
-        self::assertRulesAreConfigured($header->get());
+        self::assertRulesAreConfigured($rule->get());
     }
 
     #[Framework\Attributes\Test]
@@ -115,18 +111,27 @@ final class ConfigTest extends Framework\TestCase
         self::assertSame($finder, $this->subject->getFinder());
     }
 
-    #[\PHPUnit\Framework\Attributes\Test]
-    public function withRulesAddsGivenRules(): void
+    /**
+     * @return Generator<string, array{Src\Rules\Rule}>
+     */
+    public static function withRulesAddsRuleDataProvider(): Generator
     {
-        $this->subject->withRules(['foo' => true]);
+        $header = Src\Rules\Header::create(
+            'foo/baz',
+            Src\Package\Type::ComposerPackage,
+            Src\Package\Author::create('foo', 'foo@baz.de'),
+        );
 
-        self::assertRulesAreConfigured(['foo' => true]);
+        $ruleSet = Src\Rules\RuleSet::fromArray(['foo' => true]);
+
+        yield 'header' => [$header];
+        yield 'rule set' => [$ruleSet];
     }
 
     /**
      * @param array<string, array<string, mixed>|bool> $rules
      */
-    protected function assertRulesAreConfigured(array $rules): void
+    private function assertRulesAreConfigured(array $rules): void
     {
         self::assertSame($rules, array_intersect_assoc($this->subject->getRules(), $rules));
     }
