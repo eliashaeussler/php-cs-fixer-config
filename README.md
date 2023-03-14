@@ -2,14 +2,11 @@
 
 # PHP-CS-Fixer config
 
-[![Coverage](https://codecov.io/gh/eliashaeussler/php-cs-fixer-config/branch/main/graph/badge.svg?token=QvLNVgBu6z)](https://codecov.io/gh/eliashaeussler/php-cs-fixer-config)
-[![Maintainability](https://api.codeclimate.com/v1/badges/1a17977a507b73e45e03/maintainability)](https://codeclimate.com/github/eliashaeussler/php-cs-fixer-config/maintainability)
-[![Tests](https://github.com/eliashaeussler/php-cs-fixer-config/actions/workflows/tests.yaml/badge.svg)](https://github.com/eliashaeussler/php-cs-fixer-config/actions/workflows/tests.yaml)
-[![CGL](https://github.com/eliashaeussler/php-cs-fixer-config/actions/workflows/cgl.yaml/badge.svg)](https://github.com/eliashaeussler/php-cs-fixer-config/actions/workflows/cgl.yaml)
-[![Release](https://github.com/eliashaeussler/php-cs-fixer-config/actions/workflows/release.yaml/badge.svg)](https://github.com/eliashaeussler/php-cs-fixer-config/actions/workflows/release.yaml)
-[![Latest Stable Version](http://poser.pugx.org/eliashaeussler/php-cs-fixer-config/v)](https://packagist.org/packages/eliashaeussler/php-cs-fixer-config)
-[![PHP Version Require](http://poser.pugx.org/eliashaeussler/php-cs-fixer-config/require/php)](https://packagist.org/packages/eliashaeussler/php-cs-fixer-config)
-[![License](http://poser.pugx.org/eliashaeussler/php-cs-fixer-config/license)](LICENSE)
+[![Coverage](https://img.shields.io/codecov/c/github/eliashaeussler/php-cs-fixer-config?logo=codecov&token=QvLNVgBu6z)](https://codecov.io/gh/eliashaeussler/php-cs-fixer-config)
+[![Maintainability](https://img.shields.io/codeclimate/maintainability/eliashaeussler/php-cs-fixer-config?logo=codeclimate)](https://codeclimate.com/github/eliashaeussler/php-cs-fixer-config/maintainability)
+[![CGL](https://img.shields.io/github/actions/workflow/status/eliashaeussler/php-cs-fixer-config/cgl.yaml?label=cgl&logo=github)](https://github.com/eliashaeussler/php-cs-fixer-config/actions/workflows/cgl.yaml)
+[![Tests](https://img.shields.io/github/actions/workflow/status/eliashaeussler/php-cs-fixer-config/tests.yaml?label=tests&logo=github)](https://github.com/eliashaeussler/php-cs-fixer-config/actions/workflows/tests.yaml)
+[![Supported PHP Versions](https://img.shields.io/packagist/dependency-v/eliashaeussler/php-cs-fixer-config/php?logo=php)](https://packagist.org/packages/eliashaeussler/php-cs-fixer-config)
 
 </div>
 
@@ -19,15 +16,18 @@ I won't provide support and don't accept pull requests for this repo.
 
 ## 🔥 Installation
 
+[![Packagist](https://img.shields.io/packagist/v/eliashaeussler/php-cs-fixer-config?label=version&logo=packagist)](https://packagist.org/packages/eliashaeussler/php-cs-fixer-config)
+[![Packagist Downloads](https://img.shields.io/packagist/dt/eliashaeussler/php-cs-fixer-config?color=brightgreen)](https://packagist.org/packages/eliashaeussler/php-cs-fixer-config)
+
 ```bash
 composer require eliashaeussler/php-cs-fixer-config
 ```
 
 ## ⚡ Usage
 
-```php
-# .php-cs-fixer.php
+Configure PHP-CS-Fixer in your `.php-cs-fixer.php` file:
 
+```php
 use EliasHaeussler\PhpCsFixerConfig;
 use Symfony\Component\Finder;
 
