@@ -50,6 +50,8 @@ $ruleSet = PhpCsFixerConfig\Rules\RuleSet::fromArray([
 return PhpCsFixerConfig\Config::create()
     ->withRule($header)
     ->withRule($ruleSet)
+    // You can also overwrite all rules
+    ->withRule($ruleSet, false)
     ->withFinder(static fn (Finder\Finder $finder) => $finder->in(__DIR__))
 ;
 ```
