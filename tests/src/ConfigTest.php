@@ -52,32 +52,7 @@ final class ConfigTest extends Framework\TestCase
         $actual = Src\Config::create();
 
         self::assertSame(
-            [
-                '@PSR2' => true,
-                '@Symfony' => true,
-                'global_namespace_import' => [
-                    'import_classes' => true,
-                    'import_functions' => true,
-                ],
-                'no_superfluous_phpdoc_tags' => [
-                    'allow_mixed' => true,
-                ],
-                'ordered_imports' => [
-                    'imports_order' => [
-                        'const',
-                        'class',
-                        'function',
-                    ],
-                ],
-                'trailing_comma_in_multiline' => [
-                    'elements' => [
-                        'arguments',
-                        'arrays',
-                        'match',
-                        'parameters',
-                    ],
-                ],
-            ],
+            Src\Rules\Set\DefaultRuleSet::create()->get(),
             $actual->getRules(),
         );
         self::assertTrue($actual->getRiskyAllowed());

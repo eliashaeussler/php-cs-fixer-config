@@ -45,7 +45,7 @@ final class DefaultRulesSetTest extends Framework\TestCase
     public function getReturnsDefaultRules(): void
     {
         $expected = [
-            '@PSR2' => true,
+            '@PER' => true,
             '@Symfony' => true,
             'global_namespace_import' => [
                 'import_classes' => true,
@@ -53,13 +53,6 @@ final class DefaultRulesSetTest extends Framework\TestCase
             ],
             'no_superfluous_phpdoc_tags' => [
                 'allow_mixed' => true,
-            ],
-            'ordered_imports' => [
-                'imports_order' => [
-                    'const',
-                    'class',
-                    'function',
-                ],
             ],
             'trailing_comma_in_multiline' => [
                 'elements' => [
