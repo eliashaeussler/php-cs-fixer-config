@@ -39,40 +39,10 @@ use function is_callable;
  */
 final class Config extends \PhpCsFixer\Config
 {
-    /**
-     * @phpstan-var TRulesArray
-     */
-    private static array $defaultRules = [
-        '@PSR2' => true,
-        '@Symfony' => true,
-        'global_namespace_import' => [
-            'import_classes' => true,
-            'import_functions' => true,
-        ],
-        'no_superfluous_phpdoc_tags' => [
-            'allow_mixed' => true,
-        ],
-        'ordered_imports' => [
-            'imports_order' => [
-                'const',
-                'class',
-                'function',
-            ],
-        ],
-        'trailing_comma_in_multiline' => [
-            'elements' => [
-                'arguments',
-                'arrays',
-                'match',
-                'parameters',
-            ],
-        ],
-    ];
-
     public static function create(): self
     {
         $config = new self();
-        $config->setRules(self::$defaultRules);
+        $config->withRule(Rules\Set\DefaultRuleSet::create(), false);
         $config->setRiskyAllowed(true);
         $config->getFinder()->ignoreDotFiles(false);
         $config->getFinder()->ignoreVCSIgnored(true);
@@ -80,11 +50,15 @@ final class Config extends \PhpCsFixer\Config
         return $config;
     }
 
-    public function withRule(Rules\Rule $rule): self
+    public function withRule(Rules\Rule $rule, bool $merge = true): self
     {
-        $mergedRuleSet = array_replace_recursive($this->getRules(), $rule->get());
+        if ($merge) {
+            $rules = array_replace_recursive($this->getRules(), $rule->get());
+        } else {
+            $rules = $rule->get();
+        }
 
-        $this->setRules($mergedRuleSet);
+        $this->setRules($rules);
 
         return $this;
     }
