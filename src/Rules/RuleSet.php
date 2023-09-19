@@ -42,8 +42,7 @@ final class RuleSet implements Rule
      */
     public function __construct(
         private array $rules,
-    ) {
-    }
+    ) {}
 
     public static function create(): self
     {
