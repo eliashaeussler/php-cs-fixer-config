@@ -41,8 +41,7 @@ final class Header implements Rule
         public readonly Package\Type $packageType,
         public readonly Package\Author $packageAuthor,
         public readonly Package\License $license,
-    ) {
-    }
+    ) {}
 
     public static function create(
         string $packageName,
