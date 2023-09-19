@@ -21,7 +21,7 @@
 		"eliashaeussler/phpstan-config": "^2.0.0",
 		"ergebnis/composer-normalize": "^2.29",
 		"phpstan/extension-installer": "^1.2",
-		"phpunit/phpunit": "^10.0",
+		"phpunit/phpunit": "^10.1",
 		"rector/rector": "^0.18.0"
 	},
 	"autoload": {
