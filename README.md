@@ -54,6 +54,8 @@ return PhpCsFixerConfig\Config::create()
     // You can also overwrite all rules
     ->withRule($ruleSet, false)
     ->withFinder(static fn (Finder\Finder $finder) => $finder->in(__DIR__))
+    // You can also inject your own Finder instance
+    ->withFinder($finder)
 ;
 ```
 
