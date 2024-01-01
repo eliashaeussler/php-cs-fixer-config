@@ -30,6 +30,7 @@ $header = Rules\Header::create(
     'eliashaeussler/php-cs-fixer-config',
     Package\Type::ComposerPackage,
     Package\Author::create('Elias Häußler', 'elias@haeussler.dev'),
+    Package\CopyrightRange::create(),
     Package\License::GPL3OrLater,
 );
 

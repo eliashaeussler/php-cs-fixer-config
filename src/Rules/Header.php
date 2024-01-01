@@ -25,7 +25,6 @@ namespace EliasHaeussler\PhpCsFixerConfig\Rules;
 
 use EliasHaeussler\PhpCsFixerConfig\Package;
 
-use function date;
 use function trim;
 
 /**
@@ -40,6 +39,7 @@ final class Header implements Rule
         public readonly string $packageName,
         public readonly Package\Type $packageType,
         public readonly Package\Author $packageAuthor,
+        public readonly Package\CopyrightRange $copyrightRange,
         public readonly Package\License $license,
     ) {}
 
@@ -47,9 +47,16 @@ final class Header implements Rule
         string $packageName,
         Package\Type $packageType,
         Package\Author $packageAuthor,
+        Package\CopyrightRange $copyrightRange = null,
         Package\License $license = Package\License::Proprietary,
     ): self {
-        return new self($packageName, $packageType, $packageAuthor, $license);
+        return new self(
+            $packageName,
+            $packageType,
+            $packageAuthor,
+            $copyrightRange ?? Package\CopyrightRange::create(),
+            $license,
+        );
     }
 
     /**
@@ -76,12 +83,10 @@ final class Header implements Rule
 
     public function toString(): string
     {
-        $year = date('Y');
-
         return trim(<<<HEADER
 This file is part of the {$this->packageType->value} "{$this->packageName}".
 
-Copyright (C) {$year} {$this->packageAuthor->name} <{$this->packageAuthor->emailAddress}>
+Copyright (C) {$this->copyrightRange} {$this->packageAuthor->name} <{$this->packageAuthor->emailAddress}>
 
 {$this->license->licenseText()}
 HEADER);

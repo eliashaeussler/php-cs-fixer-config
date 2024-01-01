@@ -45,6 +45,7 @@ final class HeaderTest extends Framework\TestCase
             'eliashaeussler/php-cs-fixer-config',
             Src\Package\Type::ComposerPackage,
             Src\Package\Author::create('Elias Häußler', 'elias@haeussler.dev'),
+            Src\Package\CopyrightRange::from(2023),
             Src\Package\License::GPL3OrLater,
         );
     }
@@ -58,7 +59,7 @@ final class HeaderTest extends Framework\TestCase
                     'header' => sprintf(<<<'HEADER'
 This file is part of the Composer package "eliashaeussler/php-cs-fixer-config".
 
-Copyright (C) %s Elias Häußler <elias@haeussler.dev>
+Copyright (C) 2023-%s Elias Häußler <elias@haeussler.dev>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -89,7 +90,7 @@ HEADER, date('Y')),
             sprintf(<<<'HEADER'
 This file is part of the Composer package "eliashaeussler/php-cs-fixer-config".
 
-Copyright (C) %s Elias Häußler <elias@haeussler.dev>
+Copyright (C) 2023-%s Elias Häußler <elias@haeussler.dev>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
