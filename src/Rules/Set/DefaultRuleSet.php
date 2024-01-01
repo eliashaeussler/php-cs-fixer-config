@@ -41,7 +41,7 @@ final class DefaultRuleSet implements Rules\Rule
     public function get(): array
     {
         return [
-            '@PER' => true,
+            '@PER-CS' => true,
             '@Symfony' => true,
             'global_namespace_import' => [
                 'import_classes' => true,
