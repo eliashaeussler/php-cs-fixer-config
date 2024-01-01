@@ -36,6 +36,7 @@ $header = PhpCsFixerConfig\Rules\Header::create(
     'eliashaeussler/package-name',
     PhpCsFixerConfig\Package\Type::ComposerPackage,
     PhpCsFixerConfig\Package\Author::create('Elias Häußler', 'elias@haeussler.dev'),
+    PhpCsFixerConfig\Package\CopyrightRange::from(2021),
     PhpCsFixerConfig\Package\License::GPL3OrLater,
 );
 
