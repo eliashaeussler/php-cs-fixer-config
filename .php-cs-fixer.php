@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the Composer package "eliashaeussler/php-cs-fixer-config".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ $header = Rules\Header::create(
     'eliashaeussler/php-cs-fixer-config',
     Package\Type::ComposerPackage,
     Package\Author::create('Elias Häußler', 'elias@haeussler.dev'),
-    Package\CopyrightRange::create(),
+    Package\CopyrightRange::from(2023),
     Package\License::GPL3OrLater,
 );
 
