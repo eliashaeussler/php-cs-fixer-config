@@ -17,7 +17,7 @@
 		"symfony/finder": "^5.4 || ^6.0"
 	},
 	"require-dev": {
-		"armin/editorconfig-cli": "^1.5",
+		"armin/editorconfig-cli": "^1.5 || ^2.0",
 		"eliashaeussler/phpstan-config": "^2.0.0",
 		"ergebnis/composer-normalize": "^2.29",
 		"phpstan/extension-installer": "^1.2",
