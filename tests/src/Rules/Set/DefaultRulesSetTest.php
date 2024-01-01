@@ -45,7 +45,7 @@ final class DefaultRulesSetTest extends Framework\TestCase
     public function getReturnsDefaultRules(): void
     {
         $expected = [
-            '@PER' => true,
+            '@PER-CS' => true,
             '@Symfony' => true,
             'global_namespace_import' => [
                 'import_classes' => true,
@@ -54,6 +54,7 @@ final class DefaultRulesSetTest extends Framework\TestCase
             'no_superfluous_phpdoc_tags' => [
                 'allow_mixed' => true,
             ],
+            'single_line_empty_body' => true,
             'trailing_comma_in_multiline' => [
                 'elements' => [
                     'arguments',
