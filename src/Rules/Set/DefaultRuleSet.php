@@ -50,6 +50,7 @@ final class DefaultRuleSet implements Rules\Rule
             'no_superfluous_phpdoc_tags' => [
                 'allow_mixed' => true,
             ],
+            'single_line_empty_body' => true,
             'trailing_comma_in_multiline' => [
                 'elements' => [
                     'arguments',
