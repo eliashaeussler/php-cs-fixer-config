@@ -58,7 +58,7 @@ final class Header implements Rule
     public static function create(
         string $packageName,
         Package\Type $packageType,
-        Package\Author|array $packageAuthors,
+        Package\Author|array $packageAuthors = [],
         Package\CopyrightRange $copyrightRange = null,
         Package\License $license = Package\License::Proprietary,
     ): self {
@@ -102,14 +102,16 @@ final class Header implements Rule
         return trim(<<<HEADER
 This file is part of the {$this->packageType->value} "{$this->packageName}".
 
-{$this->generateCopyrightLines()}
-
-{$this->license->licenseText()}
+{$this->generateCopyrightLines()}{$this->license->licenseText()}
 HEADER);
     }
 
     private function generateCopyrightLines(): string
     {
+        if ([] === $this->packageAuthors) {
+            return '';
+        }
+
         $numberOfPackageAuthors = count($this->packageAuthors);
         $copyright = sprintf('Copyright (C) %s', $this->copyrightRange);
         $lines = [];
@@ -130,6 +132,10 @@ HEADER);
 
             $lines[] = $author;
         }
+
+        // Add empty lines to separate copyright and license text
+        $lines[] = '';
+        $lines[] = '';
 
         return implode(PHP_EOL, $lines);
     }
