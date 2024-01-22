@@ -51,6 +51,20 @@ final class HeaderTest extends Framework\TestCase
     }
 
     #[Framework\Attributes\Test]
+    public function createThrowsExceptionIfNoPackageAuthorsAreConfigured(): void
+    {
+        $this->expectExceptionObject(
+            new Src\Exception\NoPackageAuthorsConfigured(),
+        );
+
+        Src\Rules\Header::create(
+            'eliashaeussler/php-cs-fixer-config',
+            Src\Package\Type::ComposerPackage,
+            [],
+        );
+    }
+
+    #[Framework\Attributes\Test]
     public function createAllowsArrayOfPackageAuthors(): void
     {
         $subject = Src\Rules\Header::create(

@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\PhpCsFixerConfig\Rules;
 
+use EliasHaeussler\PhpCsFixerConfig\Exception;
 use EliasHaeussler\PhpCsFixerConfig\Package;
 
 use function count;
@@ -54,6 +55,8 @@ final class Header implements Rule
 
     /**
      * @param Package\Author|list<Package\Author> $packageAuthors
+     *
+     * @throws Exception\NoPackageAuthorsConfigured
      */
     public static function create(
         string $packageName,
@@ -64,6 +67,8 @@ final class Header implements Rule
     ): self {
         if (!is_array($packageAuthors)) {
             $packageAuthors = [$packageAuthors];
+        } elseif ([] === $packageAuthors) {
+            throw new Exception\NoPackageAuthorsConfigured();
         }
 
         return new self(
