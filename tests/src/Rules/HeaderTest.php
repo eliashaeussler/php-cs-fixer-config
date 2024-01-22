@@ -51,6 +51,32 @@ final class HeaderTest extends Framework\TestCase
     }
 
     #[Framework\Attributes\Test]
+    public function createAllowsArrayOfPackageAuthors(): void
+    {
+        $subject = Src\Rules\Header::create(
+            'eliashaeussler/php-cs-fixer-config',
+            Src\Package\Type::ComposerPackage,
+            [
+                Src\Package\Author::create('Elias Häußler', 'elias@haeussler.dev'),
+                Src\Package\Author::create('John Doe', 'john.doe@example.com'),
+                Src\Package\Author::create('Maggie Simpson', 'maggie@the-simpsons.com'),
+            ],
+            Src\Package\CopyrightRange::since(2023),
+        );
+
+        self::assertSame(
+            <<<'HEADER'
+This file is part of the Composer package "eliashaeussler/php-cs-fixer-config".
+
+Copyright (C) since 2023 Elias Häußler <elias@haeussler.dev>,
+                         John Doe <john.doe@example.com>,
+                         Maggie Simpson <maggie@the-simpsons.com>
+HEADER,
+            $subject->toString(),
+        );
+    }
+
+    #[Framework\Attributes\Test]
     public function getReturnsConfiguredRule(): void
     {
         self::assertSame(
