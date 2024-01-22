@@ -24,8 +24,8 @@ declare(strict_types=1);
 use Rector\Config\RectorConfig;
 use Rector\Php73\Rector\FuncCall\JsonThrowOnErrorRector;
 use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
-use Rector\PHPUnit\Set\PHPUnitLevelSetList;
-use Rector\Set\ValueObject\LevelSetList;
+use Rector\PHPUnit\Set\PHPUnitSetList;
+use Rector\Set\ValueObject\SetList;
 use Rector\ValueObject\PhpVersion;
 
 return static function (RectorConfig $rectorConfig): void {
@@ -42,7 +42,7 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->phpVersion(PhpVersion::PHP_81);
 
     $rectorConfig->sets([
-        LevelSetList::UP_TO_PHP_81,
-        PHPUnitLevelSetList::UP_TO_PHPUNIT_100,
+        SetList::PHP_81,
+        PHPUnitSetList::PHPUNIT_100,
     ]);
 };
