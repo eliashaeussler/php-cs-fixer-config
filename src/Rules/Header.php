@@ -25,6 +25,12 @@ namespace EliasHaeussler\PhpCsFixerConfig\Rules;
 
 use EliasHaeussler\PhpCsFixerConfig\Package;
 
+use function count;
+use function implode;
+use function is_array;
+use function sprintf;
+use function str_repeat;
+use function strlen;
 use function trim;
 
 /**
@@ -35,25 +41,35 @@ use function trim;
  */
 final class Header implements Rule
 {
+    /**
+     * @param list<Package\Author> $packageAuthors
+     */
     private function __construct(
         public readonly string $packageName,
         public readonly Package\Type $packageType,
-        public readonly Package\Author $packageAuthor,
+        public readonly array $packageAuthors,
         public readonly Package\CopyrightRange $copyrightRange,
         public readonly Package\License $license,
     ) {}
 
+    /**
+     * @param Package\Author|list<Package\Author> $packageAuthors
+     */
     public static function create(
         string $packageName,
         Package\Type $packageType,
-        Package\Author $packageAuthor,
+        Package\Author|array $packageAuthors,
         Package\CopyrightRange $copyrightRange = null,
         Package\License $license = Package\License::Proprietary,
     ): self {
+        if (!is_array($packageAuthors)) {
+            $packageAuthors = [$packageAuthors];
+        }
+
         return new self(
             $packageName,
             $packageType,
-            $packageAuthor,
+            $packageAuthors,
             $copyrightRange ?? Package\CopyrightRange::create(),
             $license,
         );
@@ -86,9 +102,35 @@ final class Header implements Rule
         return trim(<<<HEADER
 This file is part of the {$this->packageType->value} "{$this->packageName}".
 
-Copyright (C) {$this->copyrightRange} {$this->packageAuthor->name} <{$this->packageAuthor->emailAddress}>
+{$this->generateCopyrightLines()}
 
 {$this->license->licenseText()}
 HEADER);
+    }
+
+    private function generateCopyrightLines(): string
+    {
+        $numberOfPackageAuthors = count($this->packageAuthors);
+        $copyright = sprintf('Copyright (C) %s', $this->copyrightRange);
+        $lines = [];
+
+        for ($i = 0; $i < $numberOfPackageAuthors; ++$i) {
+            $author = $this->packageAuthors[$i];
+            $authorLine = sprintf('%s <%s>', $author->name, $author->emailAddress);
+
+            if (0 === $i) {
+                $author = sprintf('%s %s', $copyright, $authorLine);
+            } else {
+                $author = sprintf('%s %s', str_repeat(' ', strlen($copyright)), $authorLine);
+            }
+
+            if ($i < ($numberOfPackageAuthors - 1)) {
+                $author .= ',';
+            }
+
+            $lines[] = $author;
+        }
+
+        return implode(PHP_EOL, $lines);
     }
 }
