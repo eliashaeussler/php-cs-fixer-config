@@ -21,28 +21,17 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
+use EliasHaeussler\RectorConfig\Config\Config;
 use Rector\Config\RectorConfig;
-use Rector\Php73\Rector\FuncCall\JsonThrowOnErrorRector;
-use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
-use Rector\PHPUnit\Set\PHPUnitSetList;
-use Rector\Set\ValueObject\SetList;
-use Rector\ValueObject\PhpVersion;
+use Rector\Core\ValueObject\PhpVersion;
 
 return static function (RectorConfig $rectorConfig): void {
-    $rectorConfig->paths([
-        __DIR__.'/src',
-        __DIR__.'/tests',
-    ]);
-
-    $rectorConfig->skip([
-        AddLiteralSeparatorToNumberRector::class,
-        JsonThrowOnErrorRector::class,
-    ]);
-
-    $rectorConfig->phpVersion(PhpVersion::PHP_81);
-
-    $rectorConfig->sets([
-        SetList::PHP_81,
-        PHPUnitSetList::PHPUNIT_100,
-    ]);
+    Config::create($rectorConfig, PhpVersion::PHP_81)
+        ->in(
+            __DIR__.'/src',
+            __DIR__.'/tests',
+        )
+        ->withPHPUnit()
+        ->apply()
+    ;
 };
