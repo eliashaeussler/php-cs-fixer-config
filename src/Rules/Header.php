@@ -59,7 +59,7 @@ final class Header implements Rule
         string $packageName,
         Package\Type $packageType,
         Package\Author|array $packageAuthors = [],
-        Package\CopyrightRange $copyrightRange = null,
+        ?Package\CopyrightRange $copyrightRange = null,
         Package\License $license = Package\License::Proprietary,
     ): self {
         if (!is_array($packageAuthors)) {

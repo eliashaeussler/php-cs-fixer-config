@@ -41,12 +41,12 @@ final class CopyrightRange implements Stringable
         public readonly ?int $to,
     ) {}
 
-    public static function create(int $year = null): self
+    public static function create(?int $year = null): self
     {
         return new self(null, $year ?? self::getCurrentYear());
     }
 
-    public static function from(int $year, int $to = null): self
+    public static function from(int $year, ?int $to = null): self
     {
         return new self($year, $to ?? self::getCurrentYear());
     }
