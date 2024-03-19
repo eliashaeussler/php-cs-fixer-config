@@ -69,9 +69,8 @@ final class RuleSetTest extends Framework\TestCase
             'foo' => false,
             'baz' => [
                 'dummy' => false,
-                ],
             ],
-        );
+        ]);
 
         self::assertSame(
             [
