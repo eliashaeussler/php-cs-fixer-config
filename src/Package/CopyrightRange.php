@@ -58,6 +58,10 @@ final class CopyrightRange implements Stringable
 
     public function __toString(): string
     {
+        if ($this->from === $this->to) {
+            return (string) $this->to;
+        }
+
         if (null !== $this->from && null !== $this->to) {
             return sprintf('%d-%d', $this->from, $this->to);
         }

@@ -89,6 +89,14 @@ final class CopyrightRangeTest extends Framework\TestCase
         self::assertSame('since 2021', (string) $subject);
     }
 
+    #[Framework\Attributes\Test]
+    public function stringRepresentationDoesNotShowRangeOnIdenticalStartAndEndYear(): void
+    {
+        $subject = Src\Package\CopyrightRange::from(2024, 2024);
+
+        self::assertSame('2024', (string) $subject);
+    }
+
     private static function getCurrentYear(): int
     {
         return (int) date('Y');
