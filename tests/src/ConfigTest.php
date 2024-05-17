@@ -26,10 +26,12 @@ namespace EliasHaeussler\PhpCsFixerConfig\Tests;
 use EliasHaeussler\PhpCsFixerConfig as Src;
 use Generator;
 use PhpCsFixer\Config;
+use PhpCsFixer\Runner;
 use PHPUnit\Framework;
 use Symfony\Component\Finder;
 
 use function array_intersect_assoc;
+use function class_exists;
 
 /**
  * ConfigTest.
@@ -56,6 +58,22 @@ final class ConfigTest extends Framework\TestCase
             $actual->getRules(),
         );
         self::assertTrue($actual->getRiskyAllowed());
+    }
+
+    #[Framework\Attributes\Test]
+    public function createReturnsConfigWithParallelExecution(): void
+    {
+        // Skip test if class is not available (e.g. when testing with lowest supported version)
+        if (!class_exists(Runner\Parallel\ParallelConfig::class)) {
+            self::markTestSkipped('Parallel execution is not available.');
+        }
+
+        $actual = Src\Config::create();
+
+        self::assertEquals(
+            Runner\Parallel\ParallelConfigFactory::detect(),
+            $actual->getParallelConfig(),
+        );
     }
 
     #[Framework\Attributes\Test]
