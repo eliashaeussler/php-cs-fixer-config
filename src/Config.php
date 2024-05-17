@@ -24,9 +24,11 @@ declare(strict_types=1);
 namespace EliasHaeussler\PhpCsFixerConfig;
 
 use PhpCsFixer\ConfigInterface;
+use PhpCsFixer\Runner;
 use Symfony\Component\Finder;
 
 use function array_replace_recursive;
+use function class_exists;
 use function is_callable;
 
 /**
@@ -46,6 +48,11 @@ final class Config extends \PhpCsFixer\Config
         $config->setRiskyAllowed(true);
         $config->getFinder()->ignoreDotFiles(false);
         $config->getFinder()->ignoreVCSIgnored(true);
+
+        // Enable parallel execution (PHP-CS-Fixer >= 3.57)
+        if (class_exists(Runner\Parallel\ParallelConfig::class)) {
+            $config->setParallelConfig(Runner\Parallel\ParallelConfigFactory::detect());
+        }
 
         return $config;
     }
