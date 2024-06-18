@@ -30,7 +30,7 @@ use PhpCsFixer\Runner;
 use PHPUnit\Framework;
 use Symfony\Component\Finder;
 
-use function array_intersect_assoc;
+use function array_uintersect_assoc;
 use function class_exists;
 
 /**
@@ -144,6 +144,13 @@ final class ConfigTest extends Framework\TestCase
      */
     private function assertRulesAreConfigured(array $rules): void
     {
-        self::assertSame($rules, array_intersect_assoc($this->subject->getRules(), $rules));
+        self::assertSame(
+            $rules,
+            array_uintersect_assoc(
+                $this->subject->getRules(),
+                $rules,
+                static fn (mixed $a, mixed $b) => $a === $b ? 0 : -1,
+            ),
+        );
     }
 }
