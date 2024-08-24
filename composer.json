@@ -19,10 +19,11 @@
 	"require-dev": {
 		"armin/editorconfig-cli": "^1.5 || ^2.0",
 		"eliashaeussler/phpstan-config": "^2.0.0",
+		"eliashaeussler/phpunit-attributes": "^1.1",
 		"eliashaeussler/rector-config": "^3.0",
 		"ergebnis/composer-normalize": "^2.29",
 		"phpstan/extension-installer": "^1.2",
-		"phpunit/phpunit": "^10.1 || ^11.0"
+		"phpunit/phpunit": "^10.4 || ^11.0"
 	},
 	"autoload": {
 		"psr-4": {
