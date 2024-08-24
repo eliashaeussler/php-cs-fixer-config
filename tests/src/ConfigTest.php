@@ -61,7 +61,7 @@ final class ConfigTest extends Framework\TestCase
     }
 
     #[Framework\Attributes\Test]
-    #[PHPUnitAttributes\Attribute\RequiresClass(Runner\Parallel\ParallelConfig::class)]
+    #[PHPUnitAttributes\Attribute\RequiresClass(Runner\Parallel\ParallelConfig::class, 'Parallel execution is not available.')]
     public function createReturnsConfigWithParallelExecution(): void
     {
         $actual = Src\Config::create();
