@@ -29,7 +29,6 @@ use Symfony\Component\Finder;
 
 use function array_replace_recursive;
 use function class_exists;
-use function is_callable;
 
 /**
  * Config.
@@ -60,6 +59,7 @@ final class Config extends \PhpCsFixer\Config
     public function withRule(Rules\Rule $rule, bool $merge = true): self
     {
         if ($merge) {
+            /** @var TRulesArray $rules */
             $rules = array_replace_recursive($this->getRules(), $rule->get());
         } else {
             $rules = $rule->get();
@@ -75,7 +75,7 @@ final class Config extends \PhpCsFixer\Config
      */
     public function withFinder(Finder\Finder|callable $finder): self
     {
-        if (is_callable($finder)) {
+        if (!($finder instanceof Finder\Finder)) {
             $finder = $finder($this->getFinder());
         }
 

@@ -62,7 +62,10 @@ final class RuleSet implements Rule
      */
     public function add(array $rules): self
     {
-        $this->rules = array_replace_recursive($this->rules, $rules);
+        /** @var TRulesArray $mergedRules */
+        $mergedRules = array_replace_recursive($this->rules, $rules);
+
+        $this->rules = $mergedRules;
 
         return $this;
     }
