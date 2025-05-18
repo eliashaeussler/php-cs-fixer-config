@@ -35,4 +35,5 @@ enum Type: string
     case ComposerPlugin = 'Composer plugin';
     case SymfonyProject = 'Symfony project';
     case TYPO3Extension = 'TYPO3 CMS extension';
+    case TYPO3Project = 'TYPO3 CMS project';
 }
