@@ -2792,21 +2792,21 @@
         },
         {
             "name": "eliashaeussler/phpunit-attributes",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/phpunit-attributes.git",
-                "reference": "4c0832e0c7577500bd00ce570b23812abbdf95c2"
+                "reference": "de30e8334965d5489f8c98cfdf27224429a0515f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/phpunit-attributes/zipball/4c0832e0c7577500bd00ce570b23812abbdf95c2",
-                "reference": "4c0832e0c7577500bd00ce570b23812abbdf95c2",
+                "url": "https://api.github.com/repos/eliashaeussler/phpunit-attributes/zipball/de30e8334965d5489f8c98cfdf27224429a0515f",
+                "reference": "de30e8334965d5489f8c98cfdf27224429a0515f",
                 "shasum": ""
             },
             "require": {
-                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
-                "phpunit/phpunit": "^10.5.35 || ^11.4 || ^12.0"
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
+                "phpunit/phpunit": "^10.5.53 || ^11.5.34 || ^12.3.6"
             },
             "require-dev": {
                 "armin/editorconfig-cli": "^1.8 || ^2.0",
@@ -2840,9 +2840,9 @@
             "description": "Provides additional attributes for tests with PHPUnit",
             "support": {
                 "issues": "https://github.com/eliashaeussler/phpunit-attributes/issues",
-                "source": "https://github.com/eliashaeussler/phpunit-attributes/tree/1.7.0"
+                "source": "https://github.com/eliashaeussler/phpunit-attributes/tree/1.8.0"
             },
-            "time": "2025-03-07T22:01:25+00:00"
+            "time": "2025-11-14T11:54:49+00:00"
         },
         {
             "name": "eliashaeussler/rector-config",
