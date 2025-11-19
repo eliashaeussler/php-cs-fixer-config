@@ -29,11 +29,11 @@ namespace EliasHaeussler\PhpCsFixerConfig\Package;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class Author
+final readonly class Author
 {
     private function __construct(
-        public readonly string $name,
-        public readonly string $emailAddress,
+        public string $name,
+        public string $emailAddress,
     ) {}
 
     public static function create(

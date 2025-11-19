@@ -34,11 +34,11 @@ use function sprintf;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class CopyrightRange implements Stringable
+final readonly class CopyrightRange implements Stringable
 {
     private function __construct(
-        public readonly ?int $from,
-        public readonly ?int $to,
+        public ?int $from,
+        public ?int $to,
     ) {}
 
     public static function create(?int $year = null): self
