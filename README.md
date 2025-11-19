@@ -3,7 +3,6 @@
 # PHP-CS-Fixer config
 
 [![Coverage](https://img.shields.io/coverallsCoverage/github/eliashaeussler/php-cs-fixer-config?logo=coveralls)](https://coveralls.io/github/eliashaeussler/php-cs-fixer-config)
-[![Maintainability](https://img.shields.io/codeclimate/maintainability/eliashaeussler/php-cs-fixer-config?logo=codeclimate)](https://codeclimate.com/github/eliashaeussler/php-cs-fixer-config/maintainability)
 [![CGL](https://img.shields.io/github/actions/workflow/status/eliashaeussler/php-cs-fixer-config/cgl.yaml?label=cgl&logo=github)](https://github.com/eliashaeussler/php-cs-fixer-config/actions/workflows/cgl.yaml)
 [![Tests](https://img.shields.io/github/actions/workflow/status/eliashaeussler/php-cs-fixer-config/tests.yaml?label=tests&logo=github)](https://github.com/eliashaeussler/php-cs-fixer-config/actions/workflows/tests.yaml)
 [![Supported PHP Versions](https://img.shields.io/packagist/dependency-v/eliashaeussler/php-cs-fixer-config/php?logo=php)](https://packagist.org/packages/eliashaeussler/php-cs-fixer-config)
