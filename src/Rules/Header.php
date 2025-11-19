@@ -39,17 +39,17 @@ use function trim;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class Header implements Rule
+final readonly class Header implements Rule
 {
     /**
      * @param list<Package\Author> $packageAuthors
      */
     private function __construct(
-        public readonly string $packageName,
-        public readonly Package\Type $packageType,
-        public readonly array $packageAuthors,
-        public readonly Package\CopyrightRange $copyrightRange,
-        public readonly Package\License $license,
+        public string $packageName,
+        public Package\Type $packageType,
+        public array $packageAuthors,
+        public Package\CopyrightRange $copyrightRange,
+        public Package\License $license,
     ) {}
 
     /**
