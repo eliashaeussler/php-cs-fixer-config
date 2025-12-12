@@ -25,6 +25,7 @@ namespace EliasHaeussler\PhpCsFixerConfig;
 
 use PhpCsFixer\ConfigInterface;
 use PhpCsFixer\Runner;
+use SplFileInfo;
 use Symfony\Component\Finder;
 
 use function array_replace_recursive;
@@ -45,8 +46,12 @@ final class Config extends \PhpCsFixer\Config
         $config = new self();
         $config->withRule(Rules\Set\DefaultRuleSet::create(), false);
         $config->setRiskyAllowed(true);
-        $config->getFinder()->ignoreDotFiles(false);
-        $config->getFinder()->ignoreVCSIgnored(true);
+        $finder = $config->getFinder();
+
+        if ($finder instanceof Finder\Finder) {
+            $finder->ignoreDotFiles(false);
+            $finder->ignoreVCSIgnored(true);
+        }
 
         // Enable parallel execution (PHP-CS-Fixer >= 3.57)
         if (class_exists(Runner\Parallel\ParallelConfig::class)) {
@@ -71,7 +76,7 @@ final class Config extends \PhpCsFixer\Config
     }
 
     /**
-     * @param Finder\Finder|callable(Finder\Finder): Finder\Finder $finder
+     * @param Finder\Finder|callable(iterable<SplFileInfo>): Finder\Finder $finder
      */
     public function withFinder(Finder\Finder|callable $finder): self
     {
