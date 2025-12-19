@@ -35,6 +35,7 @@ use function sprintf;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
+#[Framework\Attributes\CoversClass(Src\Rules\Header::class)]
 final class HeaderTest extends Framework\TestCase
 {
     private Src\Rules\Header $subject;

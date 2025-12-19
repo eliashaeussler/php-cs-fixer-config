@@ -27,12 +27,13 @@ use EliasHaeussler\PhpCsFixerConfig as Src;
 use PHPUnit\Framework;
 
 /**
- * DefaultRulesSetTest.
+ * DefaultRuleSetTest.
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class DefaultRulesSetTest extends Framework\TestCase
+#[Framework\Attributes\CoversClass(Src\Rules\Set\DefaultRuleSet::class)]
+final class DefaultRuleSetTest extends Framework\TestCase
 {
     private Src\Rules\Set\DefaultRuleSet $subject;
 
