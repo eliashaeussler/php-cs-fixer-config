@@ -31,7 +31,7 @@ use EliasHaeussler\PhpCsFixerConfig\Rules;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class DefaultRuleSet implements Rules\Rule
+final readonly class DefaultRuleSet implements Rules\Rule
 {
     public static function create(): self
     {
