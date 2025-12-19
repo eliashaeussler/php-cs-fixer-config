@@ -39,8 +39,11 @@ $header = PhpCsFixerConfig\Rules\Header::create(
     PhpCsFixerConfig\Package\License::GPL3OrLater,
 );
 
+// Create TYPO3 rule set
+$typo3RuleSet = PhpCsFixerConfig\Rules\Set\TYPO3RuleSet::create();
+
 // Create custom rule set
-$ruleSet = PhpCsFixerConfig\Rules\RuleSet::fromArray([
+$customRuleSet = PhpCsFixerConfig\Rules\RuleSet::fromArray([
     'modernize_types_casting' => true,
     'php_unit_test_case_static_method_calls' => [
         'call_type' => 'self',
@@ -49,9 +52,10 @@ $ruleSet = PhpCsFixerConfig\Rules\RuleSet::fromArray([
 
 return PhpCsFixerConfig\Config::create()
     ->withRule($header)
-    ->withRule($ruleSet)
+    ->withRule($typo3RuleSet)
+    ->withRule($customRuleSet)
     // You can also overwrite all rules
-    ->withRule($ruleSet, false)
+    ->withRule($customRuleSet, false)
     ->withFinder(static fn (Finder\Finder $finder) => $finder->in(__DIR__))
     // You can also inject your own Finder instance
     ->withFinder($finder)
