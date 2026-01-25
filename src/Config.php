@@ -80,7 +80,7 @@ final class Config extends \PhpCsFixer\Config
      */
     public function withFinder(Finder\Finder|callable $finder): self
     {
-        if (!($finder instanceof Finder\Finder)) {
+        if (!$finder instanceof Finder\Finder) {
             $finder = $finder($this->getFinder());
         }
 
