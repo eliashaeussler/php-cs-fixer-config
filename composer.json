@@ -23,7 +23,7 @@
 		"eliashaeussler/rector-config": "^4.0",
 		"ergebnis/composer-normalize": "^2.29",
 		"phpstan/extension-installer": "^1.2",
-		"phpunit/phpunit": "^11.0 || ^12.0",
+		"phpunit/phpunit": "^11.0 || ^12.0 || ^13.0",
 		"shipmonk/composer-dependency-analyser": "^1.8",
 		"typo3/coding-standards": "^0.6.0 || ^0.7.0 || ^0.8.0"
 	},
