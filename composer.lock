@@ -2796,32 +2796,32 @@
         },
         {
             "name": "eliashaeussler/phpunit-attributes",
-            "version": "2.0.0",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/phpunit-attributes.git",
-                "reference": "e69c932f80d8c442d32c930a5b0cd4cd3c8da1aa"
+                "reference": "936000a5ec069fc16350020b5b4a9ece2429f170"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/phpunit-attributes/zipball/e69c932f80d8c442d32c930a5b0cd4cd3c8da1aa",
-                "reference": "e69c932f80d8c442d32c930a5b0cd4cd3c8da1aa",
+                "url": "https://api.github.com/repos/eliashaeussler/phpunit-attributes/zipball/936000a5ec069fc16350020b5b4a9ece2429f170",
+                "reference": "936000a5ec069fc16350020b5b4a9ece2429f170",
                 "shasum": ""
             },
             "require": {
                 "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
-                "phpunit/phpunit": "^11.5.34 || ^12.3.6"
+                "phpunit/phpunit": "^11.5.34 || ^12.3.6 || ^13.0"
             },
             "require-dev": {
                 "armin/editorconfig-cli": "^2.0",
-                "eliashaeussler/php-cs-fixer-config": "^2.0",
-                "eliashaeussler/phpstan-config": "^2.5.1",
-                "eliashaeussler/rector-config": "^3.0",
+                "eliashaeussler/php-cs-fixer-config": "^3.0",
+                "eliashaeussler/phpstan-config": "^4.0.0",
+                "eliashaeussler/rector-config": "^4.0",
                 "ergebnis/composer-normalize": "^2.30",
                 "phpstan/extension-installer": "^1.2",
                 "phpstan/phpstan-phpunit": "^2.0",
-                "phpunit/phpcov": "^10.0 || ^11.0",
-                "symfony/console": "^6.4 || ^7.0"
+                "phpunit/phpcov": "^10.0 || ^11.0 || ^12.0",
+                "symfony/console": "^6.4 || ^7.0 || ^8.0"
             },
             "type": "library",
             "autoload": {
@@ -2844,9 +2844,9 @@
             "description": "Provides additional attributes for tests with PHPUnit",
             "support": {
                 "issues": "https://github.com/eliashaeussler/phpunit-attributes/issues",
-                "source": "https://github.com/eliashaeussler/phpunit-attributes/tree/2.0.0"
+                "source": "https://github.com/eliashaeussler/phpunit-attributes/tree/2.0.2"
             },
-            "time": "2025-11-18T15:31:41+00:00"
+            "time": "2026-03-07T20:33:09+00:00"
         },
         {
             "name": "eliashaeussler/rector-config",
