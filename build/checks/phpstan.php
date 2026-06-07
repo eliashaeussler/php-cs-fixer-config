@@ -21,20 +21,14 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-use EliasHaeussler\PhpCsFixerConfig\Config;
-use EliasHaeussler\PhpCsFixerConfig\Package;
-use EliasHaeussler\PhpCsFixerConfig\Rules;
-use Symfony\Component\Finder;
+use EliasHaeussler\PHPStanConfig;
 
-$header = Rules\Header::create(
-    'eliashaeussler/php-cs-fixer-config',
-    Package\Type::ComposerPackage,
-    Package\Author::create('Elias Häußler', 'elias@haeussler.dev'),
-    Package\CopyrightRange::from(2023),
-    Package\License::GPL3OrLater,
-);
-
-return Config::create()
-    ->withRule($header)
-    ->withFinder(static fn (Finder\Finder $finder) => $finder->in(__DIR__))
+return PHPStanConfig\Config\Config::create(dirname(__DIR__, 2))
+    ->in(
+        'src',
+        'tests',
+    )
+    ->withBleedingEdge()
+    ->maxLevel()
+    ->toArray()
 ;
